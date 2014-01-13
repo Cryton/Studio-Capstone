@@ -26,7 +26,7 @@ Now once you setup git it's very simple to use.
 
 4. Type "git remote add origin https://github.com/Cryton/Studio-Capstone.git"
 
-5. Type "git pull origin master"
+5. Type "git pull origin development"
 
 6. You should now see this README.md along with the Design doc in the folder. Once we create the project
 we will put it in here and can push/pull to this repo.
@@ -34,11 +34,11 @@ we will put it in here and can push/pull to this repo.
 Push/Pulling your data
 ----------------------
 1. Hold shift and right click the folder and select "Open Command Window Here"
-2. First do a "git pull origin master" to pull down any new changes. If you get Merge conflicts open up the
+2. First do a "git pull origin development" to pull down any new changes. If you get Merge conflicts open up the
 appropriate files and fix the conflicts. (Highlighted by ============== in the code files.)
 3. Now to add files. To add a specific files do "git add (filename here)". To add all changes files do "git add -A"
 4. Next commit your files using "git commit -m "Description here""
-5. Finally do "git push -u origin master"
+5. Finally do "git push -u origin development"
 
 
 
