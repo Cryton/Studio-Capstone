@@ -19,10 +19,15 @@ Do the install and brief setup. There is also an app but loses some functionalit
 
 Now once you setup git it's very simple to use.
 1. Create a folder anywhere on your computer for the project.
+
 2. Hold shift and right click the folder and select "Open Command Window Here"
+
 3. Type "git init" in the command prompt
+
 4. Type "git remote add origin https://github.com/Cryton/Studio-Capstone.git"
+
 5. Type "git pull origin master"
+
 6. You should now see this README.md along with the Design doc in the folder. Once we create the project
 we will put it in here and can push/pull to this repo.
 
