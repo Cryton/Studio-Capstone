@@ -37,5 +37,4 @@ appropriate files and fix the conflicts. (Highlighted by ============== in the c
 
 
 
-That's the basic of Github! Ask me if somethings doesn't make sense. If you use UI instead of command lines though 
-than I can't do much all my work is through commands due to company stuff.
+That's the basic of Github! Ask me if somethings doesn't make sense.
