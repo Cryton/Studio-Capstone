@@ -46,7 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Make_People.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\RTS\Gooey.cs" />
      <Compile Include="Assets\Scripts\RTS\S.cs" />
      <Compile Include="Assets\Scripts\RTS\S_BasicUnit.cs" />
      <Compile Include="Assets\Scripts\RTS\S_Cam.cs" />
