@@ -1,11 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Gooey.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\Menu\MainMenu.cs" Line="31" Column="70" />
       <File FileName="Assets\Scripts\Menu\VideoPlayer.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="33" Column="44" />
       <File FileName="Assets\Scripts\RTS\S_BasicUnit.cs" Line="1" Column="1" />
+=======
+      <File FileName="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs" Line="21" Column="3" />
+>>>>>>> 970b20b8fdbae2e3f4101d60db01fba23d2e22b3
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
