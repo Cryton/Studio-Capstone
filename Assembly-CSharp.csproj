@@ -39,17 +39,13 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-     <Compile Include="Assets\Create_Building.cs" />
-     <Compile Include="Assets\Scripts\Make_People.cs" />
-=======
      <Compile Include="Assets\AstarPathfindingProject\Core\AI\AIPath.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\AI\NavmeshController.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Core\AI\Seeker.cs" />
@@ -118,7 +114,7 @@
      <Compile Include="Assets\AstarPathfindingProject\Utilities\SizeProfiler.cs" />
      <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
      <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
->>>>>>> 970b20b8fdbae2e3f4101d60db01fba23d2e22b3
+     <Compile Include="Assets\Create_Building.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
      <Compile Include="Assets\Scripts\RTS\Gooey.cs" />
      <Compile Include="Assets\Scripts\RTS\Make_People.cs" />
@@ -126,25 +122,13 @@
      <Compile Include="Assets\Scripts\RTS\S_BasicUnit.cs" />
      <Compile Include="Assets\Scripts\RTS\S_Cam.cs" />
      <Compile Include="Assets\Scripts\RTS\S_Selector.cs" />
-     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
-     <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-     <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
-     <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
-     <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
-     <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
-     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
-     <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
-     <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\License.txt" />
-     <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
-     <None Include="Assets\AstarPathfindingProject\link.xml" />
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
- </Reference>
  <Reference Include="Pathfinding.JsonFx">
  <HintPath>Assets\AstarPathfindingProject\Plugins\JsonFx\Pathfinding.JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
