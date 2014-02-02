@@ -17,7 +17,7 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,100))
+			if(Physics.Raycast(r,out hit,1000))
 			{
 				start = hit.point;
 				mouseStart = Input.mousePosition;
@@ -29,7 +29,7 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,100))
+			if(Physics.Raycast(r,out hit,1000))
 			{
 				finish = hit.point;
 				//b2.transform.position = finish;
@@ -49,11 +49,15 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,100))
+			if(Physics.Raycast(r,out hit,1000))
 			{
 				foreach(GameObject g in selectedUnits)
 				{
 					S_BasicUnit unit = g.GetComponent<S_BasicUnit>();
+					if(!unit)
+					{
+						unit = g.transform.parent.GetComponent<S_BasicUnit>();
+					}
 					unit.Move(hit.point);
 				}
 			}
@@ -65,6 +69,10 @@ public class S_Selector : MonoBehaviour {
 		foreach(GameObject uni in selectedUnits)
 		{
 			S_BasicUnit unit = uni.GetComponent<S_BasicUnit>();
+			if(!unit)
+			{
+				unit = uni.transform.parent.GetComponent<S_BasicUnit>();
+			}
 			unit.isSelected = false;
 		}
 		selectedUnits.Clear();
@@ -132,7 +140,12 @@ public class S_Selector : MonoBehaviour {
 		foreach(GameObject uni in selectedUnits)
 		{
 			S_BasicUnit unit = uni.GetComponent<S_BasicUnit>();
+			if(!unit)
+			{
+				unit = uni.transform.parent.GetComponent<S_BasicUnit>();
+			}
 			unit.isSelected = true;
+
 		}
 		
 		
