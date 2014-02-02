@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\VideoPlayer.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menu\MainMenu.cs" Line="76" Column="4" />
-      <File FileName="Assets\Scripts\Menu\VideoPlayer.js" Line="13" Column="36" />
+      <File FileName="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs" Line="21" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
