@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Gooey.cs">
     <Files>
-      <File FileName="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs" Line="21" Column="3" />
+      <File FileName="Assets\Scripts\RTS\S_Selector.cs" Line="29" Column="4" />
+      <File FileName="Assets\Scripts\RTS\S_Cam.cs" Line="61" Column="50" />
+      <File FileName="Assets\Scripts\RTS\S_BasicUnit.cs" Line="50" Column="1" />
+      <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="27" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

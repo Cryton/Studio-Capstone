@@ -111,7 +111,7 @@ public class AIPath : MonoBehaviour {
 	protected Path path;
 	
 	/** Cached CharacterController component */
-	protected CharacterController controller;
+	public CharacterController controller;
 	
 	/** Cached NavmeshController component */
 	protected NavmeshController navController;
