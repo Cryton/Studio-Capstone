@@ -1,15 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Gooey.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Misc\LasorBullet.cs">
     <Files>
-      <File FileName="Assets\Scripts\RTS\S_Selector.cs" Line="29" Column="4" />
-      <File FileName="Assets\Scripts\RTS\S_Cam.cs" Line="61" Column="50" />
-      <File FileName="Assets\Scripts\RTS\S_BasicUnit.cs" Line="50" Column="1" />
-      <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="27" Column="2" />
+      <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="24" Column="17" />
+      <File FileName="Assets\Scripts\RTS\S_Selector.cs" Line="13" Column="17" />
+      <File FileName="Assets\Scripts\FPS\S_FPSCont.cs" Line="10" Column="32" />
+      <File FileName="Assets\Scripts\Misc\LasorBullet.cs" Line="11" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="..\..\Documents\Unity Projects\Sudoko\Assets\Solver.cs" line="7" offsetX="492" offsetY="102" expression="tileP" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

@@ -21,8 +21,12 @@ public class Gooey : MonoBehaviour {
 		selStrings = new string[] {"Attack!", "Defend", "Move Here", "Wait","Follow","Waypoint","Squad","Scatter"};
 	}
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		if(Input.GetKey(KeyCode.B))
+		{
+			SwitchToFPS();
+		}
 	}
 
 	void OnGUI()
@@ -34,5 +38,11 @@ public class Gooey : MonoBehaviour {
 		GUI.Box(new Rect(unitBox.x + unitBox.width/20, unitBox.y + unitBox.height/10, unitBox.width*.4f, unitBox.height*.95f), image);
 		GUI.Box(new Rect(unitBox.x + unitBox.width/20*2 + unitBox.width*.4f, unitBox.y + unitBox.height/10, unitBox.width*.5f, unitBox.height*.95f), "Unit Stats will go here" +"\r\n"+"\r\n"  + "Austin this week did RTS UI, Credits Video and different Options buttons" + "\r\n"+"\r\n"+ "Austin Next week is doing FPS UI/Button effects for a prettier UI"+"\r\n" +"\r\n" + "Goodbye Studio! PS. Don't trust Mr. Day" );
 		GUI.Box(mapBox,"Map");
+	}
+	public void SwitchToFPS()
+	{
+		S_Selector control = transform.parent.GetComponent<S_Selector>();
+		control.Deselect();
+		transform.parent.gameObject.SetActive(false);
 	}
 }
