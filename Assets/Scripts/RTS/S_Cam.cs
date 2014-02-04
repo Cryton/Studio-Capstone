@@ -50,15 +50,15 @@ public class S_Cam : MonoBehaviour {
 		print(zoomDist);
 		if(maxZoom> zoomDist && zoomDist > minZoom)
 		{
-			cam.transform.Translate(Vector3.forward*zoom);
+			cam.transform.Translate(Vector3.forward*zoom*2);
 		}
 		else if(zoomDist > maxZoom && zoom > 0)
 		{
-			cam.transform.Translate(Vector3.forward*zoom);
+			cam.transform.Translate(Vector3.forward*zoom*2);
 		}
 		else if(zoomDist< minZoom && zoom < 0)
 		{
-			cam.transform.Translate(Vector3.forward*zoom);
+			cam.transform.Translate(Vector3.forward*zoom*2);
 		}
 		
 	}

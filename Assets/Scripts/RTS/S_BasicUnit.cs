@@ -5,28 +5,29 @@ public class S_BasicUnit : MonoBehaviour {
 	public bool isSelected;
 	Vector3 target;
 	bool moving;
-	public CharacterController cont;
+	public GameObject circle;
+//	public CharacterController cont;
 	// Use this for initialization
 	void Start () 
 	{
-	
+//		if(!cont)
+//		{
+//			transform.GetComponent<CharacterController>();	
+//		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!cont)
-		{
-			transform.GetComponent<CharacterController>();	
-		}
+
 		//print(cont.isGrounded);
 		if(isSelected)
 		{
-			renderer.material.color = new Color(0,100,0,100);	
+			circle.renderer.enabled = true;
 		}
 		else
 		{
-			renderer.material.color = new Color(100,0,0,100);
+			circle.renderer.enabled = false;
 		}
 //		if(moving)
 //		{

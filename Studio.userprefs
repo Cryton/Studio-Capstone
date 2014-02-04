@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FPS\FpsGooey.cs">
     <Files>
@@ -7,6 +8,15 @@
       <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="6" Column="2" />
       <File FileName="Assets\Scripts\RTS\S_BasicUnit.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FPS\FpsGooey.cs" Line="6" Column="13" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Gooey.cs">
+    <Files>
+      <File FileName="Assets\Scripts\RTS\S_Selector.cs" Line="29" Column="4" />
+      <File FileName="Assets\Scripts\RTS\S_Cam.cs" Line="61" Column="50" />
+      <File FileName="Assets\Scripts\RTS\S_BasicUnit.cs" Line="50" Column="1" />
+      <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="27" Column="2" />
+>>>>>>> c4fcadc170a48054a7024d5b256342767b1386b9
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
