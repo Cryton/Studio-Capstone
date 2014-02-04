@@ -66,16 +66,7 @@ public class S_Selector : MonoBehaviour {
 	}
 	void SelectionBox(GameObject g)
 	{
-		foreach(GameObject uni in selectedUnits)
-		{
-			S_BasicUnit unit = uni.GetComponent<S_BasicUnit>();
-			if(!unit)
-			{
-				unit = uni.transform.parent.GetComponent<S_BasicUnit>();
-			}
-			unit.isSelected = false;
-		}
-		selectedUnits.Clear();
+		Deselect();
 		if(g)
 		{
 			selectedUnits.Add(g);
@@ -150,7 +141,19 @@ public class S_Selector : MonoBehaviour {
 		
 		
 	}
-	
+	public void Deselect()
+	{
+		foreach(GameObject uni in selectedUnits)
+		{
+			S_BasicUnit unit = uni.GetComponent<S_BasicUnit>();
+			if(!unit)
+			{
+				unit = uni.transform.parent.GetComponent<S_BasicUnit>();
+			}
+			unit.isSelected = false;
+		}
+		selectedUnits.Clear();
+	}
 	void OnGUI()
 	{
 		//GUI.Box(new Rect(boxVect.x,boxVect.y,40,40),"Hello");
