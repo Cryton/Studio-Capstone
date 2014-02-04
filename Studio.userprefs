@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Make_People.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RTS\Gooey.cs">
     <Files>
       <File FileName="Assets\Scripts\RTS\Make_People.cs" Line="96" Column="1" />
+      <File FileName="Assets\Scripts\RTS\Gooey.cs" Line="49" Column="4" />
+      <File FileName="Assets\Scripts\Menu\MainMenu.cs" Line="62" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
