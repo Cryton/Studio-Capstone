@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Create_Building.cs" />
+     <Compile Include="Assets\Scripts\FPS\S_FPSCont.cs" />
      <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Misc\LasorBullet.cs" />
      <Compile Include="Assets\Scripts\RTS\Gooey.cs" />
      <Compile Include="Assets\Scripts\RTS\Make_People.cs" />
      <Compile Include="Assets\Scripts\RTS\S.cs" />
