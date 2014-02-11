@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Create_Building.cs" />
      <Compile Include="Assets\Landscapes part2\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Standard Assets\Image Effects (Pro Only)\ContrastStretchEffect.cs" />
