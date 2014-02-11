@@ -12,6 +12,8 @@ public class Gooey : MonoBehaviour {
 	public GUISkin skin, skin2;
 	bool escape;
 	public bool RTS;
+	public GameObject cam1,cam2;
+	float timer;
 	// Use this for initialization
 	void Start () {
 		escape = false;
@@ -28,21 +30,17 @@ public class Gooey : MonoBehaviour {
 		escapeString = new string[] {"Return to Game","Settings","Return to Menu"};
 	}
 	// Update is called once per frame
-	void Update () {
-
+	void Update () 
+	{
+		timer+= Time.deltaTime;
 		if(Input.GetKeyDown(KeyCode.Escape))
 			escape = !escape;
 
-		if(Input.GetKeyDown(KeyCode.C))
+		if(Input.GetKey(KeyCode.C)&& timer > .2f)
 		{
-			RTS = !RTS;
-		}
-
-		if(Input.GetKeyDown(KeyCode.B))
-		{
-			//RTS = !RTS;
-			SwitchToFPS();
-		}
+			SwitchModes();
+			timer = 0;
+		}		
 	}
 
 	void OnGUI()
@@ -77,10 +75,12 @@ public class Gooey : MonoBehaviour {
 				Application.LoadLevel("Menu");
 		}
 	}
-	public void SwitchToFPS()
+	public void SwitchModes()
 	{
-		S_Selector control = transform.parent.GetComponent<S_Selector>();
+		S_Selector control = cam1.transform.GetComponent<S_Selector>();
 		control.Deselect();
-		transform.parent.gameObject.SetActive(false);
+		RTS = !RTS;
+		cam1.SetActive(!cam1.activeSelf);
+		cam2.SetActive(!cam2.activeSelf);
 	}
 }
