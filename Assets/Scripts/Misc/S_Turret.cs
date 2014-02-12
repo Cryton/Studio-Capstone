@@ -11,7 +11,11 @@ public class S_Turret : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		turret1.LookAt(target.transform.position);
-		turret1.transform.Rotate(new Vector3(-90,0,0));
+		S_BasicUnit tank = transform.GetComponent<S_BasicUnit>();
+		if(!tank.destroyed)
+		{
+			turret1.LookAt(target.transform.position);
+			turret1.transform.Rotate(new Vector3(-90,0,0));
+		}
 	}
 }

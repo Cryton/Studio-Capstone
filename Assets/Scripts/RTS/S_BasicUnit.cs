@@ -9,7 +9,7 @@ public class S_BasicUnit : MonoBehaviour {
 	public GameObject circle,boom,smoke;
 	public List<GameObject> targetList;
 	public float range,health;
-
+	float deathTimer;
 	void Start () 
 	{
 
@@ -20,16 +20,22 @@ public class S_BasicUnit : MonoBehaviour {
 	{
 		if(destroyed)
 		{
+			deathTimer += Time.deltaTime;
 			isSelected = false;
 			tag = "Junk";
-			boom.SetActive(true);
-			smoke.SetActive(true);
+
+			if(deathTimer > 10)
+			{
+				Destroy(gameObject);
+			}
 		}
 		else
 		{
 			if(health < 1)
 			{
 				destroyed = true;
+				boom.SetActive(true);
+				smoke.SetActive(true);
 			}
 			if(isSelected)
 			{
