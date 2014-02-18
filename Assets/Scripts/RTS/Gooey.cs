@@ -3,31 +3,49 @@ using System.Collections;
 
 public class Gooey : MonoBehaviour {
 
-	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2;
-	float CBwidth, CBheight ,UBwidth, UBheight;
+	public Camera MainCamera;
+	public GameObject fpsController;
+	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2,settingsBox,graphicsBox,audioBox;
+	float CBwidth, CBheight ,UBwidth, UBheight, renderDistance, MusicVolume, SoundVolume;
+	int AA;
+	string resoW, resoY;
 	int grid = 0;
-	int escapegrid = 0;
+	int escapegrid = 3;
 	string[] selStrings, escapeString;
 	public Texture2D image;
 	public GUISkin skin, skin2;
-	bool escape;
+	bool escape,settings, anisotropic,fullScreen;
 	public bool RTS;
 	public GameObject cam1,cam2;
 	float timer;
 	// Use this for initialization
 	void Start () {
+		AA = 0;
+		anisotropic = false;
 		escape = false;
-		CBwidth = Screen.width/2;
-		CBheight = Screen.height/4;
-		UBwidth = Screen.width/4;
-		UBheight = Screen.height/3.5f;
-		commandBox = new Rect(Screen.width/2-CBwidth/2,Screen.height-CBheight,CBwidth,CBheight);
-		unitBox = new Rect(Screen.width - UBwidth, Screen.height-UBheight,UBwidth,UBheight);
-		mapBox = new Rect(0, Screen.height-UBheight,UBwidth,UBheight);
-		mapBox2 = new Rect(Screen.width - Screen.width/40 - Screen.width/5 , 0 + Screen.height/30,Screen.width/5,Screen.height/4);
-		escapeBox = new Rect(Screen.width/2-(Screen.width/10)/2 , Screen.height/2 -(Screen.height/5) ,Screen.width/10,Screen.height/5);
+		fullScreen = true;
+		renderDistance = 1000;
+		resoW = "1920";
+		resoY = "1080";
+		Setup (int.Parse(resoW),int.Parse(resoY));
+	}
+
+	void Setup(int width, int height)
+	{
+		CBwidth = width/2;
+		CBheight = height/4;
+		UBwidth = width/4;
+		UBheight = height/3.5f;
+		commandBox = new Rect(width/2-CBwidth/2,height-CBheight,CBwidth,CBheight);
+		unitBox = new Rect(width - UBwidth, height-UBheight,UBwidth,UBheight);
+		mapBox = new Rect(0, height-UBheight,UBwidth,UBheight);
+		mapBox2 = new Rect(width - width/40 - width/5 , 0 + height/30,width/5,height/4);
+		escapeBox = new Rect(width/2-(width/10)/2 , height/2 -(height/5) ,width/10,height/5);
+		settingsBox = new Rect(width/2-(width/1.5f)/2 , height/2 - (height/1.5f)/2 , width/1.5f, height/1.5f);
+		graphicsBox = new Rect(settingsBox.x + settingsBox.width*.033f ,settingsBox.y + settingsBox.height*.025f,settingsBox.width *.45f,settingsBox.height*.95f);
+		audioBox = new Rect(settingsBox.x + settingsBox.width*.0166f +settingsBox.width/2,settingsBox.y + settingsBox.height*.025f,settingsBox.width *.45f,settingsBox.height*.95f);
 		selStrings = new string[] {"Attack!", "Defend", "Move Here", "Wait","Follow","Waypoint","Squad","Scatter"};
-		escapeString = new string[] {"Return to Game","Settings","Return to Menu"};
+		escapeString = new string[] {"Return to Game","Settings","Return to Menu","PlaceHolder"};
 	}
 	// Update is called once per frame
 	void Update () 
@@ -71,10 +89,100 @@ public class Gooey : MonoBehaviour {
 			GUI.skin = skin2;
 			GUI.Box(escapeBox,"Menu");
 			escapegrid = GUI.SelectionGrid(new Rect(escapeBox.x + (escapeBox.width - escapeBox.width/1.2f)/2, escapeBox.y + (escapeBox.height-escapeBox.height/1.5f)/2 ,escapeBox.width/1.2f,escapeBox.height/1.5f), escapegrid, escapeString, 1);
-			if (escapegrid == 2)
+
+			if(escapegrid == 0)
+			{
+				escape = false;
+			}
+			if(escapegrid == 1)
+			{
+				escape = false;
+				settings = true;
+			}
+			else if (escapegrid == 2)
 				Application.LoadLevel("Menu");
 		}
+		else if(settings)
+		{
+			float offset = graphicsBox.width *.05f;
+			GUI.skin = skin2;
+			GUI.Box(settingsBox, "Settings"); 
+			GUI.Box(graphicsBox, "Graphics");
+			GUI.Box(audioBox, "Audio");
+			AA =(int)GUI.HorizontalSlider(new Rect(graphicsBox.x + offset ,graphicsBox.y + offset ,graphicsBox.x/3,graphicsBox.y/10), AA,0f,3f);
+			renderDistance = GUI.HorizontalSlider(new Rect(graphicsBox.x + offset ,graphicsBox.y + offset*2 ,graphicsBox.x/3,graphicsBox.y/10), renderDistance,1000f,2000f);
+			anisotropic = GUI.Toggle(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*4, graphicsBox.x/1, graphicsBox.y/5),anisotropic,"Anisotropic Filtering");
+			fullScreen = GUI.Toggle(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*6, graphicsBox.x/1, graphicsBox.y/5),fullScreen,"Fullscreen");
+			resoW = GUI.TextField(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*8, graphicsBox.x/3, graphicsBox.y/5),resoW);
+			resoY = GUI.TextField(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*10, graphicsBox.x/3, graphicsBox.y/5),resoY);
+			MusicVolume = GUI.HorizontalSlider(new Rect(audioBox.x + offset ,audioBox.y + offset*10 ,audioBox.x/3,audioBox.y/10), MusicVolume,0f,1f);
+			SoundVolume = GUI.HorizontalSlider(new Rect(audioBox.x + offset ,audioBox.y + offset*15 ,audioBox.x/3,audioBox.y/10), SoundVolume,0f,1f);
+			//Resolution[] resolutions = Screen.resolutions;
+			//int offsetAmount = 5;
+			//foreach(Resolution res in resolutions)
+			//{
+			//	offsetAmount +=1;
+			//	GUI.Label(new Rect(graphicsBox.x + graphicsBox.width *.05f,graphicsBox.y, graphicsBox.x/1, graphicsBox.y/5),res.width + "x" + res.height);
+			//}
+
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.05f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/3, graphicsBox.y/5), "Apply"))
+			{
+				AntiAliasing(AA);
+				AnisotropicFilter(anisotropic);
+				Maximize(fullScreen);
+				ViewDistance(renderDistance);
+				Setup (int.Parse(resoW),int.Parse(resoY));
+				ResolutionChange(resoW, resoY);
+			}
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.15f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/5, graphicsBox.y/5), "Menu"))
+			{
+				settings = false;
+				escape = true;
+				escapegrid = 3;
+			}
+			if(GUI.Button(new Rect(audioBox.x + offset,audioBox.y + offset*10, audioBox.x/5, audioBox.y/5), "Audio Test"))
+			{
+				MainCamera.audio.Play();
+			}
+			MainCamera.audio.volume = MusicVolume;
+			fpsController.audio.volume = SoundVolume;
+		}
 	}
+	public void ResolutionChange(string w, string y)
+	{
+		int width = int.Parse(w);
+		int height = int.Parse(y);
+		Screen.SetResolution(width,height, fullScreen);
+	}
+	public void Maximize(bool full)
+	{
+		if(full)
+			Screen.fullScreen = true;
+		else
+			Screen.fullScreen = false;
+	}
+
+	public void ViewDistance(float render)
+	{
+		MainCamera.farClipPlane = render;
+	}
+
+	public void AnisotropicFilter(bool boo)
+			{
+				if (!boo)
+				QualitySettings.anisotropicFiltering = AnisotropicFiltering.Disable;
+				else
+					QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
+			}
+
+	public void AntiAliasing(int amount)
+	{
+		amount*=2;
+		if(amount == 6)
+			amount =8;
+		QualitySettings.antiAliasing = amount;
+	}
+	
 	public void SwitchModes()
 	{
 		S_Selector control = cam1.transform.GetComponent<S_Selector>();
