@@ -4,7 +4,7 @@ using System.Collections;
 public class S_Cam : MonoBehaviour {
 	public GameObject cam;
 	float zoom;
-	public float minZoom,maxZoom;
+	public float minZoom,maxZoom,zoomSpeed;
 	// Use this for initialization
 	void Start () 
 	{
@@ -47,18 +47,18 @@ public class S_Cam : MonoBehaviour {
 		}
 		zoom = Input.GetAxis("Mouse ScrollWheel");
 		float zoomDist = Vector3.Distance(transform.position,cam.transform.position);
-		print(zoomDist);
+		//print(zoomDist);
 		if(maxZoom> zoomDist && zoomDist > minZoom)
 		{
-			cam.transform.Translate(Vector3.forward*zoom*2);
+			cam.transform.Translate(Vector3.forward*zoom*zoomSpeed);
 		}
 		else if(zoomDist > maxZoom && zoom > 0)
 		{
-			cam.transform.Translate(Vector3.forward*zoom*2);
+			cam.transform.Translate(Vector3.forward*zoom*zoomSpeed);
 		}
 		else if(zoomDist< minZoom && zoom < 0)
 		{
-			cam.transform.Translate(Vector3.forward*zoom*2);
+			cam.transform.Translate(Vector3.forward*zoom*zoomSpeed);
 		}
 		
 	}

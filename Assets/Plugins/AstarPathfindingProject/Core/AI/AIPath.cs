@@ -330,9 +330,12 @@ public class AIPath : MonoBehaviour {
 		if (navController != null) {
 		} else if (controller != null) {
 			controller.SimpleMove (dir);
-		} else if (rigid != null) {
-			rigid.AddForce (dir);
-		} else {
+		} 
+//		else if (rigid != null) 
+//		{
+//			rigid.AddForce (dir);
+//		} 
+		else {
 			transform.Translate (dir*Time.deltaTime, Space.World);
 		}
 	}
