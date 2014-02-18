@@ -4,8 +4,9 @@ using System.Collections;
 public class Gooey : MonoBehaviour {
 
 	public Camera MainCamera;
-	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2,settingsBox;
-	float CBwidth, CBheight ,UBwidth, UBheight, renderDistance, volume;
+	public GameObject fpsController;
+	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2,settingsBox,graphicsBox,audioBox;
+	float CBwidth, CBheight ,UBwidth, UBheight, renderDistance, MusicVolume, SoundVolume;
 	int AA;
 	string resoW, resoY;
 	int grid = 0;
@@ -15,6 +16,8 @@ public class Gooey : MonoBehaviour {
 	public GUISkin skin, skin2;
 	bool escape,settings, anisotropic,fullScreen;
 	public bool RTS;
+	public GameObject cam1,cam2;
+	float timer;
 	// Use this for initialization
 	void Start () {
 		AA = 0;
@@ -39,25 +42,23 @@ public class Gooey : MonoBehaviour {
 		mapBox2 = new Rect(width - width/40 - width/5 , 0 + height/30,width/5,height/4);
 		escapeBox = new Rect(width/2-(width/10)/2 , height/2 -(height/5) ,width/10,height/5);
 		settingsBox = new Rect(width/2-(width/1.5f)/2 , height/2 - (height/1.5f)/2 , width/1.5f, height/1.5f);
+		graphicsBox = new Rect(settingsBox.x + settingsBox.width*.033f ,settingsBox.y + settingsBox.height*.025f,settingsBox.width *.45f,settingsBox.height*.95f);
+		audioBox = new Rect(settingsBox.x + settingsBox.width*.0166f +settingsBox.width/2,settingsBox.y + settingsBox.height*.025f,settingsBox.width *.45f,settingsBox.height*.95f);
 		selStrings = new string[] {"Attack!", "Defend", "Move Here", "Wait","Follow","Waypoint","Squad","Scatter"};
 		escapeString = new string[] {"Return to Game","Settings","Return to Menu","PlaceHolder"};
 	}
 	// Update is called once per frame
-	void Update () {
-
+	void Update () 
+	{
+		timer+= Time.deltaTime;
 		if(Input.GetKeyDown(KeyCode.Escape))
 			escape = !escape;
 
-		if(Input.GetKeyDown(KeyCode.C))
+		if(Input.GetKey(KeyCode.C)&& timer > .2f)
 		{
-			RTS = !RTS;
-		}
-
-		if(Input.GetKeyDown(KeyCode.B))
-		{
-			//RTS = !RTS;
-			SwitchToFPS();
-		}
+			SwitchModes();
+			timer = 0;
+		}		
 	}
 
 	void OnGUI()
@@ -101,28 +102,30 @@ public class Gooey : MonoBehaviour {
 			else if (escapegrid == 2)
 				Application.LoadLevel("Menu");
 		}
-		if(settings)
+		else if(settings)
 		{
-			float offset = settingsBox.x/15;
+			float offset = graphicsBox.width *.05f;
 			GUI.skin = skin2;
-			GUI.Box(settingsBox, "Settings");
-			AA =(int)GUI.HorizontalSlider(new Rect(settingsBox.x + offset ,settingsBox.y + offset ,settingsBox.x/3,settingsBox.y/10), AA,0f,3f);
-			renderDistance = GUI.HorizontalSlider(new Rect(settingsBox.x + offset*40 ,settingsBox.y + offset ,settingsBox.x/3,settingsBox.y/10), renderDistance,1000f,2000f);
-			anisotropic = GUI.Toggle(new Rect(settingsBox.x + offset*20,settingsBox.y + offset, settingsBox.x/1, settingsBox.y/5),anisotropic,"Anisotropic Filtering");
-			fullScreen = GUI.Toggle(new Rect(settingsBox.x + offset*20,settingsBox.y + offset*5, settingsBox.x/1, settingsBox.y/5),fullScreen,"Fullscreen");
-			resoW = GUI.TextField(new Rect(settingsBox.x + offset*20,settingsBox.y + offset*20, settingsBox.x/3, settingsBox.y/5),resoW);
-			resoY = GUI.TextField(new Rect(settingsBox.x + offset*30,settingsBox.y + offset*20, settingsBox.x/3, settingsBox.y/5),resoY);
-			volume = GUI.HorizontalSlider(new Rect(settingsBox.x + offset*40 ,settingsBox.y + offset*10 ,settingsBox.x/3,settingsBox.y/10), volume,0f,1f);
+			GUI.Box(settingsBox, "Settings"); 
+			GUI.Box(graphicsBox, "Graphics");
+			GUI.Box(audioBox, "Audio");
+			AA =(int)GUI.HorizontalSlider(new Rect(graphicsBox.x + offset ,graphicsBox.y + offset ,graphicsBox.x/3,graphicsBox.y/10), AA,0f,3f);
+			renderDistance = GUI.HorizontalSlider(new Rect(graphicsBox.x + offset ,graphicsBox.y + offset*2 ,graphicsBox.x/3,graphicsBox.y/10), renderDistance,1000f,2000f);
+			anisotropic = GUI.Toggle(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*4, graphicsBox.x/1, graphicsBox.y/5),anisotropic,"Anisotropic Filtering");
+			fullScreen = GUI.Toggle(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*6, graphicsBox.x/1, graphicsBox.y/5),fullScreen,"Fullscreen");
+			resoW = GUI.TextField(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*8, graphicsBox.x/3, graphicsBox.y/5),resoW);
+			resoY = GUI.TextField(new Rect(graphicsBox.x + offset,graphicsBox.y + offset*10, graphicsBox.x/3, graphicsBox.y/5),resoY);
+			MusicVolume = GUI.HorizontalSlider(new Rect(audioBox.x + offset ,audioBox.y + offset*10 ,audioBox.x/3,audioBox.y/10), MusicVolume,0f,1f);
+			SoundVolume = GUI.HorizontalSlider(new Rect(audioBox.x + offset ,audioBox.y + offset*15 ,audioBox.x/3,audioBox.y/10), SoundVolume,0f,1f);
+			//Resolution[] resolutions = Screen.resolutions;
+			//int offsetAmount = 5;
+			//foreach(Resolution res in resolutions)
+			//{
+			//	offsetAmount +=1;
+			//	GUI.Label(new Rect(graphicsBox.x + graphicsBox.width *.05f,graphicsBox.y, graphicsBox.x/1, graphicsBox.y/5),res.width + "x" + res.height);
+			//}
 
-			Resolution[] resolutions = Screen.resolutions;
-			int offsetAmount = 5;
-			foreach(Resolution res in resolutions)
-			{
-				offsetAmount +=1;
-				GUI.Label(new Rect(settingsBox.x + offset*25,settingsBox.y + offset*offsetAmount, settingsBox.x/1, settingsBox.y/5),res.width + "x" + res.height);
-			}
-
-			if(GUI.Button(new Rect(settingsBox.x + offset*10,settingsBox.y + offset, settingsBox.x/3, settingsBox.y/5), "Apply"))
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.05f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/3, graphicsBox.y/5), "Apply"))
 			{
 				AntiAliasing(AA);
 				AnisotropicFilter(anisotropic);
@@ -131,17 +134,18 @@ public class Gooey : MonoBehaviour {
 				Setup (int.Parse(resoW),int.Parse(resoY));
 				ResolutionChange(resoW, resoY);
 			}
-			if(GUI.Button(new Rect(settingsBox.x + offset,settingsBox.y + offset*20, settingsBox.x/5, settingsBox.y/5), "Menu"))
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.15f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/5, graphicsBox.y/5), "Menu"))
 			{
 				settings = false;
 				escape = true;
 				escapegrid = 3;
 			}
-			if(GUI.Button(new Rect(settingsBox.x + offset,settingsBox.y + offset*10, settingsBox.x/5, settingsBox.y/5), "Audio Test"))
+			if(GUI.Button(new Rect(audioBox.x + offset,audioBox.y + offset*10, audioBox.x/5, audioBox.y/5), "Audio Test"))
 			{
 				MainCamera.audio.Play();
 			}
-			MainCamera.audio.volume = volume;
+			MainCamera.audio.volume = MusicVolume;
+			fpsController.audio.volume = SoundVolume;
 		}
 	}
 	public void ResolutionChange(string w, string y)
@@ -178,11 +182,13 @@ public class Gooey : MonoBehaviour {
 			amount =8;
 		QualitySettings.antiAliasing = amount;
 	}
-
-	public void SwitchToFPS()
+	
+	public void SwitchModes()
 	{
-		S_Selector control = transform.parent.GetComponent<S_Selector>();
+		S_Selector control = cam1.transform.GetComponent<S_Selector>();
 		control.Deselect();
-		transform.parent.gameObject.SetActive(false);
+		RTS = !RTS;
+		cam1.SetActive(!cam1.activeSelf);
+		cam2.SetActive(!cam2.activeSelf);
 	}
 }

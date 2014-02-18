@@ -17,7 +17,8 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,1000))
+			int layerMask = 1 << 8;
+			if(Physics.Raycast(r,out hit,1000,layerMask))
 			{
 				start = hit.point;
 				mouseStart = Input.mousePosition;
@@ -29,7 +30,8 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,1000))
+			int layerMask = 1 << 8;
+			if(Physics.Raycast(r,out hit,1000,layerMask))
 			{
 				finish = hit.point;
 				//b2.transform.position = finish;
@@ -58,7 +60,15 @@ public class S_Selector : MonoBehaviour {
 					{
 						unit = g.transform.parent.GetComponent<S_BasicUnit>();
 					}
-					unit.Move(hit.point);
+					if(selectedUnits.Count > 1)
+					{
+						unit.Move(Center(g.transform.position,hit.point));
+					}
+					else
+					{
+						Vector3 target = hit.point;
+						unit.Move (target);
+					}
 				}
 			}
 		}
@@ -153,6 +163,21 @@ public class S_Selector : MonoBehaviour {
 			unit.isSelected = false;
 		}
 		selectedUnits.Clear();
+	}
+	public Vector3 Center(Vector3 pos, Vector3 target)
+	{
+		Vector3 zeCenter = new Vector3();
+		foreach(GameObject unit in selectedUnits)
+		{
+			zeCenter += unit.transform.position;
+		}
+		zeCenter.x /= selectedUnits.Count;
+		zeCenter.z /= selectedUnits.Count;
+
+		Vector3 final = pos - zeCenter;
+		final.y = 0;
+		print (final+target);
+		return final + target;
 	}
 	void OnGUI()
 	{
