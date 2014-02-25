@@ -166,7 +166,7 @@ public class Gooey : MonoBehaviour {
 	{
 		MainCamera.farClipPlane = render;
 	}
-
+	//TESTING
 	public void AnisotropicFilter(bool boo)
 			{
 				if (!boo)
