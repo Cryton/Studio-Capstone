@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class S_BasicUnit : MonoBehaviour {
-	public bool isSelected,destroyed,enemy;
-	Vector3 target;
+	public bool isSelected,destroyed,enemy,air,tank;
+	Vector3 target,movePoint;
 	bool moving;
 	public GameObject circle,boom,smoke;
 	public List<GameObject> targetList;
@@ -41,6 +41,10 @@ public class S_BasicUnit : MonoBehaviour {
 			{
 				circle.renderer.enabled = true;
 			}
+			if(moving)
+			{
+				Moving(movePoint);
+			}
 			else
 			{
 				circle.renderer.enabled = false;
@@ -53,8 +57,29 @@ public class S_BasicUnit : MonoBehaviour {
 	}
 	public void Move(Vector3 point)
 	{
-		AIPath pathing = transform.GetComponent<AIPath>();
-		pathing.target = point;
+		if(!air)
+		{
+			AIPath pathing = transform.GetComponent<AIPath>();
+			pathing.target = point;
+		}
+		else
+		{
+			point.y += 55;
+			transform.LookAt(point);
+			moving = true;
+			movePoint = point;
+		}
+	}
+	public void Moving(Vector3 targetPoint)
+	{
+		if(Vector3.Distance(targetPoint,transform.position) > 5)
+		{
+			transform.Translate(Vector3.forward*5);
+		}
+		else
+		{
+			moving = false;
+		}
 	}
 	public void Attack()
 	{
@@ -62,13 +87,14 @@ public class S_BasicUnit : MonoBehaviour {
 		{
 			targetList.RemoveAt(0);
 		}
-		S_Weapon gun = gameObject.GetComponent<S_Weapon>();
-		S_Turret gun2 = gameObject.GetComponent<S_Turret>();
-		gun2.target = targetList[0].transform;
-		if(gun.CheckSight(targetList[0]))
-		{
-			gun.attack = true;
-		}
+			S_Weapon gun = gameObject.GetComponent<S_Weapon>();
+			S_Turret gun2 = gameObject.GetComponent<S_Turret>();
+			gun2.target = targetList[0].transform;
+			if(gun.CheckSight(targetList[0]))
+			{
+				gun.attack = true;
+			}
+
 	}
 	void OnTriggerEnter(Collider other)
 	{
