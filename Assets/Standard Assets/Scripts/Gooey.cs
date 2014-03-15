@@ -30,6 +30,7 @@ public class Gooey : MonoBehaviour {
 		resoW = "1920";
 		resoY = "1080";
 		Setup (int.Parse(resoW),int.Parse(resoY));
+		MusicVolume = 1f;
 	}
 
 	void Setup(int width, int height)
@@ -54,8 +55,10 @@ public class Gooey : MonoBehaviour {
 	{
 		timer+= Time.deltaTime;
 		if(Input.GetKeyDown(KeyCode.Escape))
+		{
 			escape = !escape;
-
+		settings = false;
+		}
 		if(Input.GetKey(KeyCode.C)&& timer > .2f)
 		{
 			SwitchModes();
@@ -94,15 +97,14 @@ public class Gooey : MonoBehaviour {
 
 			if(escapegrid == 0)
 			{
-				Debug.Log("HERE");
-				escapegrid = 3;
 				escape = false;
+				escapegrid = 3;
 			}
 			if(escapegrid == 1)
 			{
-				escapegrid = 3;
 				escape = false;
 				settings = true;
+				escapegrid = 3;
 			}
 			else if (escapegrid == 2)
 				Application.LoadLevel("Menu");
@@ -130,7 +132,7 @@ public class Gooey : MonoBehaviour {
 			//	GUI.Label(new Rect(graphicsBox.x + graphicsBox.width *.05f,graphicsBox.y, graphicsBox.x/1, graphicsBox.y/5),res.width + "x" + res.height);
 			//}
 
-			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.05f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/3, graphicsBox.y/5), "Apply"))
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.05f,graphicsBox.y - graphicsBox.height*-.9f, graphicsBox.x/3, graphicsBox.y/5), "Apply"))
 			{
 				AntiAliasing(AA);
 				AnisotropicFilter(anisotropic);
@@ -139,7 +141,7 @@ public class Gooey : MonoBehaviour {
 				Setup (int.Parse(resoW),int.Parse(resoY));
 				ResolutionChange(resoW, resoY);
 			}
-			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.15f,graphicsBox.y - graphicsBox.height*.05f, graphicsBox.x/5, graphicsBox.y/5), "Menu"))
+			if(GUI.Button(new Rect(graphicsBox.x + graphicsBox.width*.35f,graphicsBox.y - graphicsBox.height*-.9f, graphicsBox.x/5, graphicsBox.y/5), "Menu"))
 			{
 				settings = false;
 				escape = true;
@@ -190,16 +192,21 @@ public class Gooey : MonoBehaviour {
 	
 	public void SwitchModes()
 	{
-		S_Selector control = cam1.transform.GetComponent<S_Selector>();
-		control.Deselect();
-		RTS = !RTS;
-		cam1.SetActive(!cam1.activeSelf);
-		cam2.SetActive(!cam2.activeSelf);
+		//S_Selector control = cam1.transform.GetComponent<S_Selector>();
+		//control.Deselect();
+		//RTS = !RTS;
+		//cam1.SetActive(!cam1.activeSelf);
+		//cam2.SetActive(!cam2.activeSelf);
 	}
 
 	public bool Escape
 	{
 		get{return escape;}
 		set{escape = value;}
+	}
+	public bool Settings
+	{
+		get{return settings;}
+		set{settings = value;}
 	}
 }

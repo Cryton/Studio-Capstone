@@ -5,7 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
+<<<<<<< HEAD
 	<ProjectGuid>{23F37D40-34BD-5014-D538-FF4110252409}</ProjectGuid>
+=======
+	<ProjectGuid>{5169B90D-2BB3-14C9-FE4B-ED7E2BC28CB2}</ProjectGuid>
+>>>>>>> ea70e086a28017b13c8d45ebbd820fdeb4a4e2c7
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -39,10 +43,17 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
+<<<<<<< HEAD
 	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+=======
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+>>>>>>> ea70e086a28017b13c8d45ebbd820fdeb4a4e2c7
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -207,9 +218,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+<<<<<<< HEAD
       <Project>{F9A6546B-2142-07C5-31CB-3202F95008B0}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
       <Project>{0B2ACAC8-CF99-2121-7C5E-414E676CF894}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+=======
+      <Project>{FC7BDCC2-E720-DE9C-30EE-EE45261105FC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{C10A9784-264B-6641-C13B-415306A3F4D9}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+>>>>>>> ea70e086a28017b13c8d45ebbd820fdeb4a4e2c7
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
