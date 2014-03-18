@@ -5,11 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-<<<<<<< HEAD
-	<ProjectGuid>{23F37D40-34BD-5014-D538-FF4110252409}</ProjectGuid>
-=======
 	<ProjectGuid>{5169B90D-2BB3-14C9-FE4B-ED7E2BC28CB2}</ProjectGuid>
->>>>>>> ea70e086a28017b13c8d45ebbd820fdeb4a4e2c7
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -43,20 +39,15 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-<<<<<<< HEAD
-	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
-	</Reference>
-	<Reference Include="UnityEditor">
-	  <HintPath>I:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
-=======
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
->>>>>>> ea70e086a28017b13c8d45ebbd820fdeb4a4e2c7
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\MasterMind.cs" />
+     <Compile Include="Assets\AI\Move.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\ContrastStretchEffect.cs" />
