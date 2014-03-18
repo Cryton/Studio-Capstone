@@ -6,7 +6,7 @@ public class S_Weapon : MonoBehaviour {
 	public float reloadRate,weaponRange;
 	float timer;
 	public AudioSource audioCont;
-	public bool attack,tank;
+	public bool attack,tank,air;
 
 	// Use this for initialization
 	void Start () 
@@ -34,7 +34,7 @@ public class S_Weapon : MonoBehaviour {
 	{
 		if(!tank)
 		{
-			GameObject aBullet = Instantiate(bullet,muzzle.transform.position,transform.rotation) as GameObject;
+			GameObject aBullet = Instantiate(bullet,muzzle.transform.position,muzzle.transform.rotation) as GameObject;
 			audioCont.Play();
 		}
 		else
@@ -46,7 +46,7 @@ public class S_Weapon : MonoBehaviour {
 	}
 	public bool CheckSight(GameObject target)
 	{
-		Debug.DrawRay(muzzle.transform.position,muzzle.transform.forward*85);
+		Debug.DrawRay(muzzle.transform.position,muzzle.transform.forward*weaponRange);
 		Ray r = new Ray(muzzle.transform.position,muzzle.transform.forward);
 		RaycastHit hit;
 		if(Physics.Raycast(r,out hit,weaponRange))

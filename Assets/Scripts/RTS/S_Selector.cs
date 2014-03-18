@@ -18,7 +18,7 @@ public class S_Selector : MonoBehaviour {
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			int layerMask = 1 << 8;
-			if(Physics.Raycast(r,out hit,1000,layerMask))
+			if(Physics.Raycast(r,out hit,10000,layerMask))
 			{
 				start = hit.point;
 				mouseStart = Input.mousePosition;
@@ -31,7 +31,7 @@ public class S_Selector : MonoBehaviour {
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			int layerMask = 1 << 8;
-			if(Physics.Raycast(r,out hit,1000,layerMask))
+			if(Physics.Raycast(r,out hit,10000,layerMask))
 			{
 				finish = hit.point;
 				//b2.transform.position = finish;
@@ -51,7 +51,7 @@ public class S_Selector : MonoBehaviour {
 		{
 			Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if(Physics.Raycast(r,out hit,1000))
+			if(Physics.Raycast(r,out hit,10000))
 			{
 				foreach(GameObject g in selectedUnits)
 				{
