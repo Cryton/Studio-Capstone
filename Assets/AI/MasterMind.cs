@@ -52,7 +52,7 @@ public class MasterMind : MonoBehaviour {
     void Ask()
     {
         GameObject[] player;
-        player = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectsWithTag("PlayerUnit");
         Vector3 adv= new Vector3();
         int total = 0;
         float dist = 0;
