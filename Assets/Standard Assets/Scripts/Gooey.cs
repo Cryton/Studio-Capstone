@@ -5,7 +5,10 @@ public class Gooey : MonoBehaviour {
 
 	public Camera MainCamera;
 	public GameObject fpsController;
-	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2,settingsBox,graphicsBox,audioBox;
+	public GameObject[] units;
+	public Texture[] uPics;
+	GameObject temp;
+	Rect commandBox,unitBox,mapBox,escapeBox,mapBox2,settingsBox,graphicsBox,audioBox,storeBox;
 	float CBwidth, CBheight ,UBwidth, UBheight, renderDistance, MusicVolume, SoundVolume;
 	int AA;
 	string resoW, resoY;
@@ -14,12 +17,12 @@ public class Gooey : MonoBehaviour {
 	string[] selStrings, escapeString;
 	public Texture2D image;
 	public GUISkin skin, skin2;
-	bool escape,settings, anisotropic,fullScreen;
+	bool escape,settings, anisotropic,fullScreen,store;
 	public bool RTS;
 	public GameObject cam1,cam2;
 	float timer;
 	public bool paused;
-
+	int sPage;
 	// Use this for initialization
 	void Start () {
 		AA = 0;
@@ -31,6 +34,7 @@ public class Gooey : MonoBehaviour {
 		resoY = "1080";
 		Setup (int.Parse(resoW),int.Parse(resoY));
 		MusicVolume = 1f;
+		sPage = 0;
 	}
 
 	void Setup(int width, int height)
@@ -49,6 +53,7 @@ public class Gooey : MonoBehaviour {
 		audioBox = new Rect(settingsBox.x + settingsBox.width*.0166f +settingsBox.width/2,settingsBox.y + settingsBox.height*.025f,settingsBox.width *.45f,settingsBox.height*.95f);
 		selStrings = new string[] {"Attack!", "Defend", "Move Here", "Wait","Follow","Waypoint","Squad","Scatter"};
 		escapeString = new string[] {"Return to Game","Settings","Return to Menu","PlaceHolder"};
+		storeBox = settingsBox;
 	}
 	// Update is called once per frame
 	void Update () 
@@ -58,6 +63,10 @@ public class Gooey : MonoBehaviour {
 		{
 			escape = !escape;
 		settings = false;
+		}
+		if(Input.GetKeyDown(KeyCode.I) && escape == false && settings == false)
+		{
+			store = !store;
 		}
 		if(Input.GetKey(KeyCode.C)&& timer > .2f)
 		{
@@ -89,6 +98,19 @@ public class Gooey : MonoBehaviour {
 			GUI.Button(new Rect(mapBox2.x + (mapBox2.width/3), mapBox2.y + mapBox2.height + (Screen.height/20)*6.5f ,mapBox2.width/3 ,mapBox2.width/3), "RTS");
 			GUI.Box (new Rect(mapBox2.x , mapBox2.y + mapBox2.height + (Screen.height/20)*7 + mapBox2.width/3 ,mapBox2.width ,mapBox2.width), "Radar");
 		}
+
+		if(store)
+		{
+			GUI.Box(storeBox, "Store");
+			for(int i = 0; i < uPics.Length; i++)
+			{
+				if(GUI.Button(new Rect(storeBox.x+storeBox.width/8*i,storeBox.y + storeBox.y/1.8f,storeBox.width/8,storeBox.height/3), uPics[i]))
+				{
+					temp = (Instantiate(units[i], new Vector3(1200,14,1230),new Quaternion(0,180,0,0))) as GameObject;
+				}
+			}
+		}
+
 		if(escape)
 		{
 			GUI.skin = skin2;

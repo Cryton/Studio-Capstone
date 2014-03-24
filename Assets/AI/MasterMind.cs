@@ -7,9 +7,9 @@ public class MasterMind : MonoBehaviour {
     public GameObject spawn;
     public List<GameObject> Waypoints = new List<GameObject>(); 
      List<ArrayList> camps ;
-    List <Object> peeps = new List<Object>();
+    List <GameObject> peeps = new List<GameObject>();
     public float timer;
-    public int tracker;
+    int tracker = 0;
     GameObject temp;
      
 	// Use this for initialization
@@ -27,23 +27,25 @@ public class MasterMind : MonoBehaviour {
            temp = (Instantiate(soldier, spawn.transform.position,spawn.transform.rotation)) as GameObject;
             
            timer = 0;
-            Ask();
+           if (Waypoints[tracker] = null)
+           {
+               tracker = 0;
+           }
+           MoveSoldier(tracker, temp);
+           tracker++;
         }
 
        
 	
 	}
     //Add the soldier to a camp
-    void MoveSoldier(int spot)
+    void MoveSoldier(int spot, GameObject gObject)
     {
-        tracker = spot;
-         //peeps[tracker].name = spot.ToString();
-        temp.name = spot.ToString();
+        //tracker = spot;
+    
+        gObject.name = spot.ToString();
+        peeps.Add(gObject);
         
-        
-            //camps[spot].Add(temp);
-            //peeps.LastIndexOf(soldier);
-
             
         
 
@@ -76,9 +78,38 @@ public class MasterMind : MonoBehaviour {
             follow++;
         }
 
-        MoveSoldier(pos_w);
+        MoveCamps(pos_w);
 
 
     }
+
+    //Moves current enemys to a new camp
+    void MoveCamps(int campnumber)
+    {
+        if (Waypoints[campnumber + 1] != null)
+        {
+            foreach (GameObject s in peeps)
+            {
+                if (s.tag == (campnumber + 1).ToString())
+                {
+                    s.tag = campnumber.ToString();
+                }
+            }
+        }
+
+        else if (Waypoints[campnumber - 1] != null)
+        {
+            foreach (GameObject s in peeps)
+            {
+                if (s.tag == (campnumber - 1).ToString())
+                {
+                    s.tag = campnumber.ToString();
+                }
+            }
+        }
+
+    }
+    
+
 
 }
