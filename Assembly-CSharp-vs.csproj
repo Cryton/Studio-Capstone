@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\MasterMind.cs" />
+     <Compile Include="Assets\AI\Move.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
      <Compile Include="Assets\Landscapes part2\Skyboxes_gradient\Standard Assets\Image Effects (Pro Only)\ContrastStretchEffect.cs" />
