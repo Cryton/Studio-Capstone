@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 	float buttonW, buttonH, buttonX, buttonY, offset;
 	public Camera mainCamera;
 	public string gameScene;
+	public string otherScene;
 	public GameObject creditsObject;
 	GameObject plane;
 	Queue<Action> actions = new Queue<Action>();
@@ -65,7 +66,8 @@ public class MainMenu : MonoBehaviour
 
 	void playCredits()
 	{
-		credits = (GameObject)Instantiate(creditsObject);
+		//credits = (GameObject)Instantiate(creditsObject);
+		Application.LoadLevel(otherScene);
 		deQueue = true;
 	}
 
