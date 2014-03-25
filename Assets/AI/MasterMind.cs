@@ -27,7 +27,7 @@ public class MasterMind : MonoBehaviour {
            temp = (Instantiate(soldier, spawn.transform.position,spawn.transform.rotation)) as GameObject;
             
            timer = 0;
-           if (Waypoints[tracker] = null)
+           if (tracker > Waypoints.Count)
            {
                tracker = 0;
            }

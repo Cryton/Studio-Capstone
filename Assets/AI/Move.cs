@@ -3,8 +3,10 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
     string Camp = "";
-    bool is_Moving;
-    public float speed = 1;
+    public bool is_Moving;
+    public float Runspeed;
+    public float Walkspeed;
+    public float speed;
     float journey;
     float dist_covered;
 	// Use this for initialization
@@ -18,11 +20,15 @@ public class Move : MonoBehaviour {
         {
             Camp = name;
             is_Moving = true;
-            
+            speed = Walkspeed;
         }
         if (is_Moving)
         {
+           
+            //animation.Blend("Walking");
             Move_Now();
+            
+            
         }
 	
 	}
@@ -38,13 +44,23 @@ public class Move : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, temp.transform.position, dist_covered);
             
             journey = Vector3.Distance(this.transform.position, temp.transform.position);
-            
+
             if (journey < 40)
             {
-                is_Moving = false;
+                Stop();
             }
 
 
         }
+    }
+    public void Stop()
+    {
+        if (speed > 0)
+        {
+            speed -= Time.deltaTime;
+        }
+        else 
+        is_Moving = false;
+
     }
 }
